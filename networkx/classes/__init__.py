@@ -11,3 +11,5 @@ from networkx.classes import filters
 from networkx.classes import coreviews
 from networkx.classes import graphviews
 from networkx.classes import reportviews
+
+from .axelrod import Cultural_Network

@@ -113,7 +113,7 @@ class Cultural_Network(Graph):
         """
         if self.culturized:
             for elem in list(self.nodes):
-                print(elem, ": ", self.nodes[elem]["cultura"])
+                print(elem, ": ", self.nodes[elem]["culture"])
         else:
             print(
                 "You must add culture to the network. Use the 'create_cultural_network' method."
@@ -132,8 +132,8 @@ class Cultural_Network(Graph):
             # Choose a random neighbor
             neighbour_number = random.choice(neighbours)
             # Get the cultures of the node and its neighbor
-            agent_culture = self.nodes[agent_number]["cultura"]
-            neighbour_culture = self.nodes[neighbour_number]["cultura"]
+            agent_culture = self.nodes[agent_number]["culture"]
+            neighbour_culture = self.nodes[neighbour_number]["culture"]
             # Find the cultural features in which the node and its neighbor differ
             disagreements = []
             for idx, disagree_bool in enumerate(
@@ -154,9 +154,9 @@ class Cultural_Network(Graph):
                     print("agent_number: ", agent_number)
                     print("neighbour_number: ", neighbour_number)
                     print("feature_to_change_idx: ", feature_to_change_idx)
-                self.nodes[neighbour_number]["cultura"][
+                self.nodes[neighbour_number]["culture"][
                     feature_to_change_idx
-                ] = self.nodes[agent_number]["cultura"][feature_to_change_idx]
+                ] = self.nodes[agent_number]["culture"][feature_to_change_idx]
         return self
 
     def network_cultures(self):
@@ -205,7 +205,7 @@ class Cultural_Network(Graph):
         if self.culturized:
             color_list = []
             for node_number in list(self.nodes):
-                culture = self.nodes[node_number]["cultura"]
+                culture = self.nodes[node_number]["culture"]
                 # Find the color index corresponding to the node's culture
                 index_color = self.network_cultures()[0].index(culture)
                 # Assign the color index as the 'color' attribute of the node
@@ -227,12 +227,12 @@ class Cultural_Network(Graph):
             # check_network will accumulate the number of nodes checked in the network
             check_network = 0
             for node_number in self:
-                culture = self.nodes[node_number]["cultura"]
+                culture = self.nodes[node_number]["culture"]
                 neighbours_numbers = list(self.neighbors(node_number))
                 # check_node will accumulate the number of neighbors of a node that were checked
                 check_node = 0
                 for neighbour_number in neighbours_numbers:
-                    neighbour_culture = self.nodes[neighbour_number]["cultura"]
+                    neighbour_culture = self.nodes[neighbour_number]["culture"]
                     # check_node increments if the common features between the node and the neighbor are either 0 or all the features
                     check_node += self.common_features(
                         node_number, neighbour_number
